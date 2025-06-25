@@ -1,3 +1,21 @@
-## Deploying a 3-tier architecture in a single AZ on AWS
+### Deploying a 3-tier architecture in a single AZ on AWS
+
+This document demonstrates how a Three-tier architecture, comprising a Web tier, Application tier, and Database tier, is deployed in a single availability zone on AWS.
+
+First, we create an S3 bucket on AWS with a unique name. This will serve as a codebase for our architecture. Make sure to create this bucket in the same region as your VPC or Lab.
+
+![image](https://github.com/user-attachments/assets/a6a2f58a-9cd6-49e5-a8c8-a840a1389361)
+
+Next, create an IAM role for EC2 and attach AmazonSSMManagedInstanceCore & AmazonS3FullAccess policies for access to S3 and session manager, respectively.
+
+![image](https://github.com/user-attachments/assets/5ade16c6-93e9-4977-a0f5-d8a4b065d1f2)
+
+## Planning your architecture
+
+Below is an architecture diagram of the deployment for guidance.
+
+![image](https://github.com/user-attachments/assets/1b7469bc-3ec8-47bf-bf68-cd6b3cebda11)
+
+
 
 
