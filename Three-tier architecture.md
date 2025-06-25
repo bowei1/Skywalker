@@ -1,4 +1,4 @@
-### Deploying a 3-tier architecture in a single AZ on AWS
+#### Deploying a 3-tier architecture in a single AZ on AWS
 
 This document demonstrates how a Three-tier architecture, comprising a Web tier, Application tier, and Database tier, is deployed in a single availability zone on AWS.
 
@@ -15,6 +15,19 @@ Next, create an IAM role for EC2 and attach AmazonSSMManagedInstanceCore & Amazo
 Below is an architecture diagram of the deployment for guidance.
 
 ![image](https://github.com/user-attachments/assets/1b7469bc-3ec8-47bf-bf68-cd6b3cebda11)
+
+Create VPC (keep region consistent)
+
+![image](https://github.com/user-attachments/assets/0de993af-4268-49e1-8f22-bf6cffedd34b)
+
+Create subnets; 3 subnets are required here - Web-PublicSubnet, App-PrivateSubnet, DB-PrivateSubnet
+
+![image](https://github.com/user-attachments/assets/fd9a175b-e79b-4285-ada3-084782457ed2)
+
+![image](https://github.com/user-attachments/assets/39b0ec33-c893-4b8f-bfc8-a121aae4939c)
+
+
+
 
 
 
