@@ -12,7 +12,7 @@ Next, create an IAM role for EC2 and attach AmazonSSMManagedInstanceCore & Amazo
 
 ## Planning your architecture
 
-Below is an architecture diagram of the deployment for guidance.
+Below is an architecture diagram of the deployment for reference.
 
 ![image](https://github.com/user-attachments/assets/1b7469bc-3ec8-47bf-bf68-cd6b3cebda11)
 
@@ -25,6 +25,14 @@ Create subnets; 3 subnets are required here - Web-PublicSubnet, App-PrivateSubne
 ![image](https://github.com/user-attachments/assets/fd9a175b-e79b-4285-ada3-084782457ed2)
 
 ![image](https://github.com/user-attachments/assets/39b0ec33-c893-4b8f-bfc8-a121aae4939c)
+
+Next, to give your public subnet internet access, create an internet gateway and attach it to your VPC.
+
+![image](https://github.com/user-attachments/assets/dda64b6c-938e-4a4a-b5ce-01239e1a5cdb)
+
+![image](https://github.com/user-attachments/assets/62ca76a4-01a0-4991-a6eb-658a73dd5996)
+
+
 
 
 
