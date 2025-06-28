@@ -14,7 +14,8 @@ Next, create an IAM role for EC2 and attach AmazonSSMManagedInstanceCore & Amazo
 
 Below is an architecture diagram of the deployment for reference.
 
-![image](https://github.com/user-attachments/assets/1b7469bc-3ec8-47bf-bf68-cd6b3cebda11)
+![image](https://github.com/user-attachments/assets/3022075c-9a1c-455a-aa05-0bf53f7d79d4)
+
 
 Create VPC (keep region consistent)
 
