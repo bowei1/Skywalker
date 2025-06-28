@@ -33,6 +33,22 @@ Next, to give your public subnet internet access, create an internet gateway and
 
 ![image](https://github.com/user-attachments/assets/62ca76a4-01a0-4991-a6eb-658a73dd5996)
 
+Create a NAT GW in the Web Tier for access to the internet by the private subnets.
+
+![image](https://github.com/user-attachments/assets/bfcd2fbe-e795-4a39-bab2-151a127908c6)
+
+Create Public and Private Route tables & associate Webtier with the public subnet, Apptier/DB tier with the private subnet.
+
+![image](https://github.com/user-attachments/assets/e44697d8-529d-46a9-a024-d5c600c32f74)
+
+Edit the routers for the route tables as below. NAT Gateway on the private route table and IGW for the public route table
+
+![image](https://github.com/user-attachments/assets/6b683fc3-b2c8-4cea-b4a0-700271238979)
+
+![image](https://github.com/user-attachments/assets/5c733812-f8db-4e60-8c8c-0a01b1ee5161)
+
+
+
 
 
 
