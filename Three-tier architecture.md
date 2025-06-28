@@ -33,7 +33,7 @@ Next, to give your public subnet internet access, create an internet gateway and
 
 ![image](https://github.com/user-attachments/assets/62ca76a4-01a0-4991-a6eb-658a73dd5996)
 
-Create a NAT GW in the Web Tier for access to the internet by the private subnets.
+Create a NAT GW in the Web Tier for access to the internet by the private subnets. Assign an elastic IP .
 
 ![image](https://github.com/user-attachments/assets/bfcd2fbe-e795-4a39-bab2-151a127908c6)
 
@@ -46,6 +46,31 @@ Edit the routers for the route tables as below. NAT Gateway on the private route
 ![image](https://github.com/user-attachments/assets/6b683fc3-b2c8-4cea-b4a0-700271238979)
 
 ![image](https://github.com/user-attachments/assets/5c733812-f8db-4e60-8c8c-0a01b1ee5161)
+
+Next, Create Security groups. For the Bastion security group, edit the inbound rule to allow SSH from anywhere and ICMP
+
+![image](https://github.com/user-attachments/assets/9c1ca7e9-c7f1-47b7-aed3-76dfdf5cf6ff)
+
+For Web tier SG, edit inbound rules to allow SSH from VPC, HTTP from anywhere on port 80 and ICMP.
+
+![image](https://github.com/user-attachments/assets/c22f93a3-9488-4737-a7b1-f700b4516b76)
+
+For App tier SG, edit inbound rules to allow SSH from the Security group of Bastion Security group, TCP on port 4000 from webtier security group, amd ICMP.
+
+![image](https://github.com/user-attachments/assets/47951a94-94c1-43fc-a62b-0a3ffaa70404)
+
+For the DB tier SG, edit inbound rules to allow SSH from BastionSG, TCP on port 3306 from the web tier SG, and ICMP.
+
+![image](https://github.com/user-attachments/assets/a66da5f5-f843-4f2c-a16f-6e74c1ae6cca)
+
+Create your instances - Bastion server and Web server in WebTier subnet, app server in Apptier private subnet, and DB server in Db tier private subnet
+
+![image](https://github.com/user-attachments/assets/4b58f433-18bf-4739-999b-362a8b54e6f9)
+
+Access your instances in all subnets via the Bastion Host instance.
+
+
+
 
 
 
