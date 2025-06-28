@@ -65,7 +65,7 @@ For the DB tier SG, edit inbound rules to allow SSH from BastionSG, TCP on port 
 
 Create your instances - Bastion server and Web server in WebTier subnet, app server in Apptier private subnet, and DB server in Db tier private subnet
 
-![image](https://github.com/user-attachments/assets/4b58f433-18bf-4739-999b-362a8b54e6f9)
+![image](https://github.com/user-attachments/assets/faa9d6a8-b316-4a08-94dd-977b2212bd7f)
 
 Access your instances in all subnets via the Bastion Host instance.
 
