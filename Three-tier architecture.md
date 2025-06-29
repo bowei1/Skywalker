@@ -33,7 +33,7 @@ Next, to give your public subnet internet access, create an internet gateway and
 
 ![image](https://github.com/user-attachments/assets/62ca76a4-01a0-4991-a6eb-658a73dd5996)
 
-Create a NAT GW in the Web Tier for access to the internet by the private subnets. Assign an elastic IP .
+Create a NAT GW in the Web Tier for access to the internet by the private subnets. Assign an elastic IP.
 
 ![image](https://github.com/user-attachments/assets/bfcd2fbe-e795-4a39-bab2-151a127908c6)
 
@@ -69,6 +69,7 @@ Create your instances - Bastion server and Web server in WebTier subnet, app ser
 
 Access your instances in all subnets via the Bastion Host instance.
 
+![image](https://github.com/user-attachments/assets/54459ed3-67c3-4f47-a274-4ba4ebb7178f)
 
 
 
