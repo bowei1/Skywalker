@@ -71,6 +71,10 @@ Access your instances in all subnets via the Bastion Host instance.
 
 ![image](https://github.com/user-attachments/assets/54459ed3-67c3-4f47-a274-4ba4ebb7178f)
 
+Create a DB Subnet group;
+
+![image](https://github.com/user-attachments/assets/f24fc522-430d-4a1b-ac06-753eec0761e6)
+
 
 
 
