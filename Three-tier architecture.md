@@ -6,7 +6,7 @@ First, we create an S3 bucket on AWS with a unique name. This will serve as a co
 
 ![image](https://github.com/user-attachments/assets/a6a2f58a-9cd6-49e5-a8c8-a840a1389361)
 
-Next, create an IAM role for EC2 and attach AmazonSSMManagedInstanceCore & AmazonS3FullAccess policies for access to S3 and session manager, respectively.
+Next, create an IAM role for EC2 and attach AmazonS3FullAccess policies for access to S3.
 
 ![image](https://github.com/user-attachments/assets/5ade16c6-93e9-4977-a0f5-d8a4b065d1f2)
 
@@ -63,7 +63,7 @@ For the DB tier SG, edit inbound rules to allow SSH from BastionSG, TCP on port 
 
 ![image](https://github.com/user-attachments/assets/a66da5f5-f843-4f2c-a16f-6e74c1ae6cca)
 
-Create your instances - Bastion server and Web server in WebTier subnet, app server in Apptier private subnet, and DB server in Db tier private subnet
+Create your instances - Bastion server and Web server in WebTier subnet, app server in Apptier private subnet, and DB server in Db tier private subnet and make sure to assign the EC2s3role created to them.
 
 ![image](https://github.com/user-attachments/assets/faa9d6a8-b316-4a08-94dd-977b2212bd7f)
 
@@ -89,10 +89,75 @@ CREATE TABLE tablename;
     GRANT ALL PRIVILEGES ON database_name.* TO 'your_user_name'@'remote_host' IDENTIFIED BY 'your_password';
     FLUSH PRIVILEGES;
 sudo systemctl restart mariadb
+
+sudo mariadb
+show databases;
+CREATE TABLE IF NOT EXISTS transactions(id INT NOT NULL
+AUTO_INCREMENT, amount DECIMAL(10,2), description
+VARCHAR(100), PRIMARY KEY(id));
+INSERT INTO transactions (amount,description) VALUES ('400','groceries');
+show tables;
 ```
 
+Setup the client side of mysql on the Appserver and connect to DB in DBserver
 
+```
+sudo yum update
+sudo dnf install mariadb105
+sudo mariadb -u username -h server-ip/hostname -p
+show databases;
+```
 
+Clone this repo on your local system ; git clone https://github.com/aws-samples/aws-three-tier-web-architecture-workshop.git
+
+navagate to /aws-three-tier-web-architecture-workshop/application-code/app-tier/Dbconfig.js, fill in your information and save.
+
+![image](https://github.com/user-attachments/assets/d9dc04ee-cdb3-46c2-849c-50f61e9ea032)
+
+Go to s3 and upload the app-tier folder.
+
+![image](https://github.com/user-attachments/assets/d0573c16-d629-48a9-8884-e3673bd12c78)
+
+Now, install backend components(nvm, node.js, pm2) on Appserver
+
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+source ~/.bashrc
+nvm install 16
+nvm use 16
+npm install -g pm2
+```
+
+Download the code from the S3 bucket onto this server.
+
+```
+cd ~/
+aws s3 cp s3://BUCKET_NAME/app-tier/ app-tier --recursive
+```
+
+Install dependencies and start the app.
+```
+cd ~/app-tier
+npm install
+pm2 start index.js
+```
+
+To check if the app is running. 
+```
+pm2 list
+```
+
+run the below to keep the app running even after server interruptions;
+```
+pm2 startup
+pm2 save
+```
+
+Test the app tier ;
+```
+curl http://localhost:4000/health
+curl http://localhost:4000/transaction
+```
 
 
 
