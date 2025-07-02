@@ -75,6 +75,24 @@ Create a DB Subnet group;
 
 ![image](https://github.com/user-attachments/assets/f24fc522-430d-4a1b-ac06-753eec0761e6)
 
+Next step is to install the database on DB server;
+
+```
+sudo yum update
+sudo dnf install mariadb105-server
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
+sudo mariadb
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'place-your-password-here';
+CREATE DATABASE dbname;
+CREATE TABLE tablename;
+    GRANT ALL PRIVILEGES ON database_name.* TO 'your_user_name'@'remote_host' IDENTIFIED BY 'your_password';
+    FLUSH PRIVILEGES;
+sudo systemctl restart mariadb
+```
+
+
+
 
 
 
