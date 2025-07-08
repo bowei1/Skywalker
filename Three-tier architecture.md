@@ -156,11 +156,13 @@ curl http://localhost:4000/health
 curl http://localhost:4000/transaction
 ```
 
+Next , the web tier. Start by editing the nginx.conf file
 
+![image](https://github.com/user-attachments/assets/7a9a87e5-102b-40e4-9b83-eaef969e0791)
 
+![image](https://github.com/user-attachments/assets/a83da57a-4715-42e9-8389-06276910ea35)
 
-
-
+Upload this file & application-code/web-tier folder to the s3 bucket.
 
 
 
