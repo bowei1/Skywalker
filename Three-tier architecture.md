@@ -160,9 +160,50 @@ Next , the web tier. Start by editing the nginx.conf file
 
 ![image](https://github.com/user-attachments/assets/7a9a87e5-102b-40e4-9b83-eaef969e0791)
 
-![image](https://github.com/user-attachments/assets/a83da57a-4715-42e9-8389-06276910ea35)
+<img width="1467" height="627" alt="image" src="https://github.com/user-attachments/assets/87f98574-942f-4909-896a-27bd4b033a9e" />
 
 Upload this file & application-code/web-tier folder to the s3 bucket.
+
+<img width="1812" height="531" alt="image" src="https://github.com/user-attachments/assets/8c9f562a-262c-447f-9621-48d9bbfcc037" />
+
+Run the following lines of command to install dependencies and Ngnix
+
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+source ~/.bashrc
+nvm install 16
+nvm use 16
+```
+
+```
+cd ~/
+aws s3 cp s3://BUCKET_NAME/web-tier/ web-tier --recursive
+```
+
+```
+cd ~/web-tier
+npm install 
+npm run build
+```
+
+```
+sudo dnf update
+sudo dnf install nginx -y
+```
+
+```
+cd /etc/nginx
+sudo rm nginx.conf
+sudo aws s3 cp s3://BUCKET_NAME/nginx.conf .
+sudo service nginx restart
+chmod -R 755 /home/ec2-user
+sudo chkconfig nginx on
+```
+
+When we input the webservr IP, we get the below;
+
+<img width="1862" height="947" alt="image" src="https://github.com/user-attachments/assets/bb337c35-9851-41b0-83cd-2413fc566378" />
+
 
 
 
